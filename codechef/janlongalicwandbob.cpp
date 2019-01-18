@@ -14,7 +14,7 @@ int main(){
             else if(arr[i]%a==0){bob++;}
             else if(arr[i]%b==0){alice++;}
         }
-        if(same!=0){b0b++;}
+        if(same!=0){bob++;}
         if(bob > alice){cout<<"BOB"<<endl;}
         else{cout<<"ALICE"<<endl;}
     }
