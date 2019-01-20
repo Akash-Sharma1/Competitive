@@ -18,7 +18,7 @@ int main(){
             }
             else{
                 next[i]=pos[arr[i]];
-                pos[i]=i;
+                pos[arr[i]]=i;
             }
         }
         pos.clear();
@@ -30,6 +30,7 @@ int main(){
                 if(pos[arr[i]]==0){
                     count++;
                     p[k]=arr[i];
+                    k++;
                 }
                 pos[arr[i]]=1;
                 freq[arr[i]]--;
@@ -40,17 +41,32 @@ int main(){
                     continue;
                 }
                 count++;
-                int index=-1,minn=-1;
+                int index=-1,maxx=-1;
                 for(int j=0;j<n;j++){
                     if(freq[p[j]]==0){index=j;break;}
-                    if(minn < next[i]){
-                        
-                    }
                 }
+                if(index!=-1){
                 pos[p[index]]=0;
                 pos[arr[i]]=1;
                 p[index]=arr[i];
                 freq[arr[i]]--;
+                }
+                if(index==-1){
+                    for(int j=i-1;j>=0;j--){
+                        if(pos[arr[j]]==1 && maxx < next[j]){
+                            maxx=next[j];
+                            index=j;
+                        }
+                    }
+
+                pos[arr[index]]=0;
+                pos[arr[i]]=1;
+                for(int j=0;j<k;j++){
+                        if(arr[index]==p[j])
+                        {index=j;break;}}
+                p[index]=arr[i];
+                freq[arr[i]]--;
+                }
             }
         }
         cout << count << endl;
