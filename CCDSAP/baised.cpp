@@ -6,16 +6,17 @@ using namespace std;
     while(t--){
         long long n;
         cin >>n;
-        map<long long,long long> rank;
+        long long num[n];
         for(long long i=0;i<n;i++){
             string name;
-            int num;
             cin >> name;
-            cin >> num;
-            rank[num]++}
+            cin >> num[i];
         }
-        long long sum=0; 
-        
-        cout<<sum;
+        sort(num,num+n);
+        long long sum=0;
+        for(long long i=0;i<n;i++){
+            sum+=abs(num[i]-(i+1));
+        }
+        cout<<sum<<endl;
     }
 }
