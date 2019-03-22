@@ -19,13 +19,26 @@ using namespace std;
 
 int main(){
     fastIO
-    int n,m;
-    cin >> n >> m;
-    int c=0;;
-    while(n!=m){
-        if(m < n){c+=n-m;break;}
-        if(m%2!=0) {m++;m/=2;c+=2;}
-        else {m/=2;c++;}
-    } 
-    cout<< c;
+    int t;
+    cin >> t;
+    while(t--){
+        int n;
+        cin >> n;
+        string str;
+        cin >>str;
+        int a=0,b=0;
+        rep(i,0,n){
+            if(str[i]=='>'){
+                    break;}
+            a++;
+        }
+        repd(i,n-1,0){
+            if(str[i]=='<'){
+                    break;}
+            b++;
+        }
+        int ans=min(a,b);
+        ans=min(ans,n-1);
+        cout <<ans<<endl;
+    }
 }

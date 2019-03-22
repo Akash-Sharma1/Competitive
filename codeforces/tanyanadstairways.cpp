@@ -19,13 +19,23 @@ using namespace std;
 
 int main(){
     fastIO
-    int n,m;
-    cin >> n >> m;
-    int c=0;;
-    while(n!=m){
-        if(m < n){c+=n-m;break;}
-        if(m%2!=0) {m++;m/=2;c+=2;}
-        else {m/=2;c++;}
-    } 
-    cout<< c;
+        int n;
+        cin >> n;
+        int arr[n];
+        int count=0;
+        vector<int> v;
+        rep(i,0,n){cin >> arr[i];}
+        int i=0;
+        while(i<n){
+            if(arr[i]==1)count++;
+            int c=1;
+            i++;
+            while(i<n && arr[i]!=1){
+                c++;
+                i++;
+            }
+            v.pb(c);
+        }
+        cout <<count<<endl;
+        rep(i,0,v.size())cout << v[i]<<" ";
 }

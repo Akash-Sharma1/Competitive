@@ -19,13 +19,20 @@ using namespace std;
 
 int main(){
     fastIO
-    int n,m;
-    cin >> n >> m;
-    int c=0;;
-    while(n!=m){
-        if(m < n){c+=n-m;break;}
-        if(m%2!=0) {m++;m/=2;c+=2;}
-        else {m/=2;c++;}
-    } 
-    cout<< c;
+    int n;
+    cin >>n;
+    int arr[n+1];
+    rep(i,1,n+1){cin >> arr[i];}
+    int i=0,count=0;
+    while(i!=n){
+        i++;
+        int x=arr[i];
+        count++;
+        while(i<x){
+            i++;
+            x=max(arr[i],x);
+            if(x==n){cout << count; return 0;}
+        }
+    }
+    cout <<count;
 }

@@ -19,13 +19,14 @@ using namespace std;
 
 int main(){
     fastIO
-    int n,m;
-    cin >> n >> m;
-    int c=0;;
-    while(n!=m){
-        if(m < n){c+=n-m;break;}
-        if(m%2!=0) {m++;m/=2;c+=2;}
-        else {m/=2;c++;}
-    } 
-    cout<< c;
+    ll a,b,c,d;
+    cin >> a >> b >> c >> d;
+    if(a==0 && d==0 && c!=0)
+    {cout << 0;return 0;}
+    a=a*2;
+    d=-(d*2);
+    ll c1=-c;
+    ll c2=c;
+    if(a+c1+c2+d==0)cout << 1;
+    else cout << 0;
 }

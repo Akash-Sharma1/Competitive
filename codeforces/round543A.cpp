@@ -19,13 +19,18 @@ using namespace std;
 
 int main(){
     fastIO
-    int n,m;
-    cin >> n >> m;
-    int c=0;;
-    while(n!=m){
-        if(m < n){c+=n-m;break;}
-        if(m%2!=0) {m++;m/=2;c+=2;}
-        else {m/=2;c++;}
-    } 
-    cout<< c;
+    int n,m,k;
+    cin >> n >> m >> k;
+    int p[n+1],school[n+1];
+    rep(i,1,n+1){cin >> p[i];}
+    rep(i,1,n+1){cin >> school[i];}
+    int c=0;
+    int maxx[n+1]={0};
+    rep(i,1,n+1){maxx[school[i]]=max(maxx[school[i]],p[i]);}
+    rep(i,0,k){
+        int x;
+        cin >> x;
+        if(maxx[school[x]]!=p[x]){c++;}
+    }
+    cout << c;
 }

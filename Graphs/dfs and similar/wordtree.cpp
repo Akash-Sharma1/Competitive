@@ -25,16 +25,17 @@ string dfs(vector<int> g[],string *str,int i,int *visit){
              s=s+dfs(g,str,*itr,visit);
         }
     }
-    return str[i]=str[i]+s;
+    str[i]=str[i]+s;
+    return str[i];
 }
 
 int main(){
-    fastIO
+    //fastIO
     int n,q;
     cin >> n >> q;
     string str[n+1];
     rep(i,1,n+1){cin >> str[i];}
-    vector<int> g[n];
+    vector<int> g[n+1];
     rep(i,0,n-1){
         int src,dest;
         cin >>src >>dest;
@@ -45,20 +46,20 @@ int main(){
     visit[1]=1;
     str[1]=dfs(g,str,1,visit);
     while(q--){
-        int n;
-        cin >>n;
+        int x;
+        cin >>x;
         string s;
         cin >> s;
-        int alpha[26]={0};
-        int comp[26]={0};
-        rep(i,0,str[n].length()){
-            alpha[(int)str[n][i]-97]++;
+        cout <<str[x]<<endl;
+        map<int,int> alpha,comp;
+        rep(i,0,str[x].length()){
+            alpha[((int)str[x][i]-97)]=1;
         }
         rep(i,0,s.length()){
             comp[(int)s[i]-97]++;
         }
         int count=0;
-        rep(i,0,26){if(comp[i]>0 && alpha[i]==0)count++;}
+        rep(i,0,26){ if(comp[i]>alpha[i]) count+=comp[i]-alpha[i];}
         cout <<count<<endl;
     }
 }

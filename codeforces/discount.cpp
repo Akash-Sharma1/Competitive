@@ -19,13 +19,21 @@ using namespace std;
 
 int main(){
     fastIO
-    int n,m;
-    cin >> n >> m;
-    int c=0;;
-    while(n!=m){
-        if(m < n){c+=n-m;break;}
-        if(m%2!=0) {m++;m/=2;c+=2;}
-        else {m/=2;c++;}
-    } 
-    cout<< c;
+    ll n;
+    cin >> n;
+    ll arr[n];
+    rep(i,0,n){cin >>arr[i];}
+    sort(arr,arr+n);
+    ll m;
+    cin >> m;
+    ll q[n];
+    rep(i,0,m){cin >> q[i];}
+    ll sum=0;
+    rep(i,0,n){
+        sum+=arr[i];
+    }
+    rep(i,0,m){
+        cout <<sum-arr[n-q[i]]<<endl;
+    }
+
 }

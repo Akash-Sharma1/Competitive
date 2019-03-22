@@ -18,14 +18,22 @@
 using namespace std;
 
 int main(){
-    fastIO
-    int n,m;
-    cin >> n >> m;
-    int c=0;;
-    while(n!=m){
-        if(m < n){c+=n-m;break;}
-        if(m%2!=0) {m++;m/=2;c+=2;}
-        else {m/=2;c++;}
-    } 
-    cout<< c;
+    int t;
+    cin >> t;
+    while(t--){
+        string str;
+        int d;
+        cin >> str;
+        cin >>d;
+        int n=str.length();
+        int c=0;
+        int last=-1;
+        rep(k,1,d){
+            rep(i,0,n)  if((int)str[i]-48==k && i>last){
+                cout <<k;c++;last=i;
+            }
+        }
+        rep(i,0,n-c)cout << d;
+        cout <<endl;
+    }
 }

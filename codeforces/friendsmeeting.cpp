@@ -19,13 +19,16 @@ using namespace std;
 
 int main(){
     fastIO
-    int n,m;
-    cin >> n >> m;
-    int c=0;;
-    while(n!=m){
-        if(m < n){c+=n-m;break;}
-        if(m%2!=0) {m++;m/=2;c+=2;}
-        else {m/=2;c++;}
-    } 
-    cout<< c;
+    int a,b;
+    cin >>a >> b;
+    int x=max(a,b)-min(a,b);
+    ll ans=0;
+    if(x%2==0){
+        ans=(x/2)*(x/2+1);
+    }
+    else{
+        ans=(x/2)*(x/2+1);
+        ans+=(x/2+1);
+    }
+    cout <<ans;
 }

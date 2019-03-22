@@ -17,15 +17,22 @@
 #define maxN 1000000005
 using namespace std;
 
-int main(){
-    fastIO
-    int n,m;
-    cin >> n >> m;
-    int c=0;;
-    while(n!=m){
-        if(m < n){c+=n-m;break;}
-        if(m%2!=0) {m++;m/=2;c+=2;}
-        else {m/=2;c++;}
-    } 
-    cout<< c;
+int main()
+{
+    int n,k,sum=0;
+    cin>>n>>k;
+    vector<int> arr;
+    rep(i,0,n){int x;cin >> x; arr.push_back(x);}
+    sort(arr.begin(),arr.end());
+    while(k--){
+        int l=0,maxx=0,start=0,end=0;
+        rep(i,0,n-sum){  
+            while(i<n && arr[i]-arr[l]<=5)i++;
+            if(maxx< i-l){maxx=i-l;start=l;end=i;}
+            if(i<n && arr[i]-arr[l]>5){l++;}
+        }
+        sum+=maxx;
+        arr.erase(arr.begin()+start,arr.begin()+end);
+    }
+    cout<<sum;
 }

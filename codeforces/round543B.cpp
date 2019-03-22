@@ -19,13 +19,19 @@ using namespace std;
 
 int main(){
     fastIO
-    int n,m;
-    cin >> n >> m;
-    int c=0;;
-    while(n!=m){
-        if(m < n){c+=n-m;break;}
-        if(m%2!=0) {m++;m/=2;c+=2;}
-        else {m/=2;c++;}
-    } 
-    cout<< c;
+    int n;
+    cin >> n;
+    int arr[n];
+    rep(i,0,n){cin >>arr[i];}
+    unordered_map<int,int> ump;
+    rep(i,0,n){
+        rep(j,i+1,n){
+            ump[arr[i]+arr[j]]++;
+        }
+    }
+    int maxx=0;
+    for(auto itr=ump.begin();itr!=ump.end();itr++){
+        maxx=max(itr->second,maxx);
+    }
+    cout<<maxx;
 }

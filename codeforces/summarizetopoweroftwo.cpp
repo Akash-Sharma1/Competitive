@@ -19,13 +19,24 @@ using namespace std;
 
 int main(){
     fastIO
-    int n,m;
-    cin >> n >> m;
-    int c=0;;
-    while(n!=m){
-        if(m < n){c+=n-m;break;}
-        if(m%2!=0) {m++;m/=2;c+=2;}
-        else {m/=2;c++;}
-    } 
-    cout<< c;
+    int n;
+    cin >>n;
+    int arr[n];
+    unordered_map<int,int> mp1;
+    rep(i,0,n){cin >>arr[i];}
+    rep(i,0,n){
+        mp1[arr[i]]++;
+    }
+    int c=0;
+    rep(i,0,n){
+        int flag=0;
+        repd(j,31,0){
+            int x=(1 >> j);
+            int diff=abs(arr[i]-x);
+            if(mp1[diff]>0 && arr[i]!=j){flag=1;break;}
+            if(arr[i]==arr[j] && mp1[diff]>1){flag=1;break;} 
+        }
+        if(flag==0){c++;}
+    }
+    cout <<c;
 }

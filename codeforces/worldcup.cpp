@@ -19,13 +19,22 @@ using namespace std;
 
 int main(){
     fastIO
-    int n,m;
-    cin >> n >> m;
-    int c=0;;
-    while(n!=m){
-        if(m < n){c+=n-m;break;}
-        if(m%2!=0) {m++;m/=2;c+=2;}
-        else {m/=2;c++;}
-    } 
-    cout<< c;
+    int n,a,b;
+    cin >> n >> a >> b;
+    int gap=2,c=0;
+    for(gap=2;gap<=256;gap*=2){
+        c++;
+        int rem=0;
+        int upper=0;
+        if(a%gap!=0){upper=(a/gap+1)*gap;}
+        else{upper=a;}
+        int lower=upper-gap+1;
+   // cout <<lower<<"  "<<upper<<endl;
+        if(upper>=a && lower<=a && upper>=b && lower<=b){
+            if(gap==n)cout <<"Final!";
+            else cout <<c;
+            break;
+        }
+    }
+    return 0;
 }

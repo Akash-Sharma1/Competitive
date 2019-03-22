@@ -7,7 +7,7 @@
 #define fi first
 #define se second
 #define be begin()
-#define pb push_back
+#define pub push_back
 #define en end()
 //memset(dp,1000000,sizeof(int)*1000001);
 #define le length()
@@ -17,15 +17,23 @@
 #define maxN 1000000005
 using namespace std;
 
+int dfs(vector<int> arr[],int node,int level){
+    int lvl=level;
+    for(auto itr=arr[node].begin();itr!=arr[node].end();itr++){
+        lvl=max(lvl,dfs(arr,*itr,level+1));
+    }
+    return lvl;
+}
 int main(){
     fastIO
-    int n,m;
-    cin >> n >> m;
-    int c=0;;
-    while(n!=m){
-        if(m < n){c+=n-m;break;}
-        if(m%2!=0) {m++;m/=2;c+=2;}
-        else {m/=2;c++;}
-    } 
-    cout<< c;
+    int n;
+    cin >> n;
+    vector<int> arr[n+1];
+    rep(i,1,n+1){
+        int src;
+        cin >>src;
+        if(src==-1){src=0;}
+        arr[src].pub(i);
+    }
+    cout << dfs(arr,0,0);
 }

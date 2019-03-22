@@ -19,13 +19,18 @@ using namespace std;
 
 int main(){
     fastIO
-    int n,m;
-    cin >> n >> m;
-    int c=0;;
-    while(n!=m){
-        if(m < n){c+=n-m;break;}
-        if(m%2!=0) {m++;m/=2;c+=2;}
-        else {m/=2;c++;}
-    } 
-    cout<< c;
+    string str;
+    cin >>str;
+    int n=str.length();
+    int count=0;
+    rep(i,0,n){
+        int sum=(int)str[i]-48;
+        while(i<n && sum%3!=0 ){
+            i++;
+            if(((int)str[i]-48)%3==0){sum=(int)str[i]-48;break;}
+            sum+=(int)str[i]-48;
+        }
+        if(sum%3==0){count++;}
+    }
+    cout <<count;
 }

@@ -18,14 +18,20 @@
 using namespace std;
 
 int main(){
-    fastIO
-    int n,m;
-    cin >> n >> m;
-    int c=0;;
-    while(n!=m){
-        if(m < n){c+=n-m;break;}
-        if(m%2!=0) {m++;m/=2;c+=2;}
-        else {m/=2;c++;}
-    } 
-    cout<< c;
+ //fastIO
+    int t;
+    cin >> t;
+    while(t--){
+        int d;
+        cin >> d;
+    if(d==0){
+        cout <<"Y "<<0.000000000 << " " <<0.000000000<<'\n';}
+        else if(d*d-4*d<0){cout <<"N"<<endl;}
+        else{
+        cout << "Y ";
+        double a1;
+        a1=(d+sqrt(d*d-4*d))/2.0;
+        if(d>2)cout <<fixed<< std::setprecision(9) << a1 << " " <<d-a1<<'\n';
+        }
+    }
 }
